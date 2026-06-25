@@ -63,6 +63,17 @@ services:
     networks:
       - micro-book-net
 
+  frontend:
+    build:
+      context: ./frontend
+    container_name: micro-book-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - gateway
+    networks:
+      - micro-book-net
+
 networks:
   micro-book-net:
     driver: bridge

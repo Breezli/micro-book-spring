@@ -3,6 +3,8 @@ package com.microbook.gateway.config;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -20,6 +22,8 @@ import java.util.List;
 @Component
 public class JwtAuthGatewayFilterFactory
         extends AbstractGatewayFilterFactory<JwtAuthGatewayFilterFactory.Config> {
+
+    private static final Logger log = LoggerFactory.getLogger(JwtAuthGatewayFilterFactory.class);
 
     private final SecretKey key;
 
@@ -70,7 +74,13 @@ public class JwtAuthGatewayFilterFactory
                         .build();
                 return chain.filter(modifiedExchange);
             })
-            .onErrorResume(e -> unauthorized(exchange, "Token 无效或已过期"));
+            .onErrorResume(e -> {
+                log.warn("JWT filter error for {} {}: {}",
+                    exchange.getRequest().getMethod(),
+                    exchange.getRequest().getURI().getPath(),
+                    e.toString());
+                return unauthorized(exchange, "Token 无效或已过期");
+            });
         };
     }
 
