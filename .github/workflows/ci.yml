@@ -7,7 +7,7 @@ on:
     branches: [main, master]
 
 env:
-  REGISTRY: ghcr.io/${{ github.repository_owner }}
+  REGISTRY: ghcr.io/${{ lower(github.repository_owner) }}
   IMAGE_TAG: ${{ github.sha }}
 
 jobs:
@@ -52,7 +52,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
