@@ -25,11 +25,35 @@ public class BookService {
 
     public void initData() {
         if (bookRepository.count() == 0) {
-            Book sample = new Book("微服务架构设计", "John Doe");
-            sample.setIsbn("978-7-111-12345-6");
-            sample.setDescription("介绍微服务架构的设计原则与实践");
-            sample.setPrice(new java.math.BigDecimal("59.00"));
-            bookRepository.save(sample);
+            Book b1 = new Book("微服务架构设计", "John Doe");
+            b1.setIsbn("978-7-111-12345-6");
+            b1.setDescription("介绍微服务架构的设计原则与实践，涵盖 Spring Cloud 组件");
+            b1.setPrice(new java.math.BigDecimal("59.00"));
+            bookRepository.save(b1);
+
+            Book b2 = new Book("深入理解Java虚拟机", "周志明");
+            b2.setIsbn("978-7-111-56789-0");
+            b2.setDescription("JVM 内存管理、类加载机制与性能调优");
+            b2.setPrice(new java.math.BigDecimal("89.00"));
+            bookRepository.save(b2);
+
+            Book b3 = new Book("Spring Boot 实战", "Craig Walls");
+            b3.setIsbn("978-7-115-34567-8");
+            b3.setDescription("Spring Boot 核心特性与微服务开发实践");
+            b3.setPrice(new java.math.BigDecimal("69.00"));
+            bookRepository.save(b3);
+
+            Book b4 = new Book("Redis 设计与实现", "黄健宏");
+            b4.setIsbn("978-7-111-23456-7");
+            b4.setDescription("Redis 数据结构、持久化机制与缓存策略");
+            b4.setPrice(new java.math.BigDecimal("49.00"));
+            bookRepository.save(b4);
+
+            Book b5 = new Book("Docker 实践", "李志伟");
+            b5.setIsbn("978-7-115-45678-9");
+            b5.setDescription("容器化部署与 Kubernetes 编排实战");
+            b5.setPrice(new java.math.BigDecimal("55.00"));
+            bookRepository.save(b5);
         }
     }
 

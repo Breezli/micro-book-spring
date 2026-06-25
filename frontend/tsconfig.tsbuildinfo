@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/api/client.ts","./src/components/BookCard.tsx","./src/components/ConfirmDialog.tsx","./src/components/Modal.tsx","./src/components/Toast.tsx","./src/pages/BookListPage.tsx","./src/pages/LoginPage.tsx"],"version":"5.9.3"}
