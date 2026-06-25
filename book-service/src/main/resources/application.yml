@@ -17,6 +17,21 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: false
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: 6379
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 0
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+      use-key-prefix: true
   cloud:
     consul:
       host: localhost

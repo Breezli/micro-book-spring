@@ -8,6 +8,14 @@ services:
     networks:
       - micro-book-net
 
+  redis:
+    image: redis:7-alpine
+    container_name: micro-book-redis
+    expose:
+      - "6379"
+    networks:
+      - micro-book-net
+
   auth-service:
     build:
       context: .
@@ -31,9 +39,11 @@ services:
       - "8082"
     environment:
       - SPRING_CLOUD_CONSUL_HOST=consul
+      - REDIS_HOST=redis
     depends_on:
       - consul
       - auth-service
+      - redis
     networks:
       - micro-book-net
 

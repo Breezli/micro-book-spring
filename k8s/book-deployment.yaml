@@ -24,6 +24,8 @@ spec:
           env:
             - name: SPRING_CLOUD_CONSUL_HOST
               value: "consul"
+            - name: REDIS_HOST
+              value: "redis"
           resources:
             requests:
               memory: "256Mi"

@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REGISTRY = "ghcr.io/your-github-username/micro-book-spring"
+        REGISTRY = "ghcr.io/breezli/micro-book-spring"
         IMAGE_TAG = "${BUILD_NUMBER}"
         K8S_NAMESPACE = "micro-book"
     }
